@@ -5,6 +5,14 @@
 // blocks of code will be above it
 ////////////////////
 
+////////////////////
+// To do:
+// 
+// - Reduce CPU usage
+// - Stop puck entering goal from behind
+// - Stop crashing when showing leaderboard
+////////////////////
+
 PImage background, playerSprite, imgExplosion, altPlayerSprite;
 PImage puckImg;
 
