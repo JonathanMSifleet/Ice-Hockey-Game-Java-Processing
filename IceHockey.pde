@@ -10,7 +10,6 @@
 // 
 // - Reduce CPU usage
 // - Stop puck entering goal from behind
-// - Stop crashing when showing leaderboard
 ////////////////////
 
 PImage background, playerSprite, imgExplosion, altPlayerSprite;
@@ -132,6 +131,9 @@ void createPuck(int i) {
   } else { 
     arrayOfPucks[i] = new Puck(width, (int) random(0, height));
   }
+  
+  arrayOfPucks[i].tempSpeedValue = 0;
+  arrayOfPucks[i].changeImage();
 
   // if the program hasn't already stop the pucks from overlapping when they're being created
   if (initialRun==false) {

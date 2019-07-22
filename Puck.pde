@@ -9,6 +9,7 @@ class Puck { //<>//
   public int radius;
   private final float[] speeds = {4.5, 6};
   public PImage sprite;
+  public float tempSpeedValue;
 
   protected float distance;
 
@@ -61,8 +62,6 @@ class Puck { //<>//
 
   protected void render() {
 
-    float tempSpeedValue=0;
-
     tint(255, 255); // make image fully opaque
 
     // if the puck is moving backwards then "pretend" the speed is a positive value:
@@ -71,8 +70,10 @@ class Puck { //<>//
     } else {
       tempSpeedValue = this.speedX;
     }
-    
-    changeImage(tempSpeedValue);
+
+    if (normalisedFrameCounter % 3 != 0) {
+      changeImage();
+    }
 
     imageMode(CENTER);
     image(this.sprite, this.x, this.y);
@@ -302,7 +303,7 @@ class Puck { //<>//
     tempSpeedY = 0;
   }
 
-  protected void changeImage(float tempSpeedValue) {
+  protected void changeImage() {
 
     String colour;
     int rotation =0;
@@ -310,29 +311,29 @@ class Puck { //<>//
     //gets the rotation based upon how many frames have elapsed
 
     if (normalisedFrameCounter < 3) {
-      rotation =0;
+      rotation = 0;
     } else if (normalisedFrameCounter < 6) {
-      rotation=45;
-    } else if (normalisedFrameCounter <9) {
+      rotation = 45;
+    } else if (normalisedFrameCounter < 9) {
       rotation = 90;
     } else if (normalisedFrameCounter < 12) {
-      rotation =135;
+      rotation = 135;
     }
 
-    colour = changeColour(tempSpeedValue);
+    colour = changeColour();
 
     this.sprite = loadImage("sprites/"+colour+rotation+".png");
   }
 
-  protected String changeColour(float tempSpeedValue) {
+  protected String changeColour() {
     // change colour based upon speed or type:
     if (this.circumference == 14 ) {
       return "fast";
     } else if (this.circumference == 30) {
       return "slow";
-    } else if (tempSpeedValue <= speeds[0]) {
+    } else if (this.tempSpeedValue <= speeds[0]) {
       return "green";
-    } else if (tempSpeedValue <= speeds[1]) {
+    } else if (this.tempSpeedValue <= speeds[1]) {
       return "orange";
     } else {
       return "red";
