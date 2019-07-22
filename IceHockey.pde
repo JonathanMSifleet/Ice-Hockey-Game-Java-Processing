@@ -14,7 +14,6 @@
 ////////////////////
 
 PImage background, playerSprite, imgExplosion, altPlayerSprite;
-PImage puckImg;
 
 ArrayList<Explosion> explosionList = new ArrayList<Explosion>();
 
@@ -184,7 +183,7 @@ void handlePuckInNet(int i) {
   boolean puckInGoal = arrayOfPucks[i].detectPuckInGoal(scoringBox);
 
   if (puckInGoal == true) {
-    player1.lives--;
+    //player1.lives--;
     removePuck(i);
   }
 }

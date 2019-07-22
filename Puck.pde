@@ -8,6 +8,7 @@ class Puck { //<>//
   public int circumference = 20;
   public int radius;
   private final float[] speeds = {4.5, 6};
+  public PImage sprite;
 
   protected float distance;
 
@@ -70,11 +71,11 @@ class Puck { //<>//
     } else {
       tempSpeedValue = this.speedX;
     }
-
+    
     changeImage(tempSpeedValue);
 
     imageMode(CENTER);
-    image(puckImg, this.x, this.y);
+    image(this.sprite, this.x, this.y);
     imageMode(CORNER);
   }
 
@@ -320,7 +321,7 @@ class Puck { //<>//
 
     colour = changeColour(tempSpeedValue);
 
-    puckImg = loadImage("sprites/"+colour+rotation+".png");
+    this.sprite = loadImage("sprites/"+colour+rotation+".png");
   }
 
   protected String changeColour(float tempSpeedValue) {
