@@ -45,7 +45,7 @@ void setup() {
   playerSprite = loadImage("sprites/Player.png");
   imgExplosion = loadImage("sprites/imgExplosion.png");
   altPlayerSprite = loadImage("sprites/altPlayerSprite.png");
-  
+
   // initializes objects:
   player1 = new Player(150, height/2);
   goalFrame = new GoalFrame();
@@ -124,14 +124,18 @@ void drawTelemetry() {
 }
 
 void createPuck(int i) {
-  if (i==3) {
+
+  switch (i) {
+  case 3:
     arrayOfPucks[i] = new FastPuck(width, (int) random(0, height));
-  } else if (i==4) {
+    break;
+  case 4:
     arrayOfPucks[i] = new SlowPuck(width, (int) random(0, height));
-  } else { 
+    break;
+  default:
     arrayOfPucks[i] = new Puck(width, (int) random(0, height));
   }
-  
+
   arrayOfPucks[i].tempSpeedValue = 0;
   arrayOfPucks[i].changeImage();
 
