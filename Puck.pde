@@ -1,4 +1,4 @@
-class Puck { //<>//
+class Puck { //<>// //<>//
 
   public float x, y;
   public float speedX, speedY;

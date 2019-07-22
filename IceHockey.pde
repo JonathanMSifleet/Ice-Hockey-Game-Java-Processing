@@ -8,6 +8,7 @@
 ////////////////////
 // To do:
 // 
+// - Refactor
 // - Reduce CPU usage
 // - Stop puck entering goal from behind
 ////////////////////
@@ -81,8 +82,12 @@ void draw () {
         deleteSplashScreenObjects();
       }
     } else {
-      doInitialRunFunctions();
 
+      // if it is the first run of draw() create the pucks
+      if (initialRun == true) {
+        doInitialRunFunctions();
+      }
+     
       // main code:
 
       drawBackground(); // overwrite drawn spirtes
@@ -271,16 +276,12 @@ void stopPucksOverlapping() {
 }
 
 void doInitialRunFunctions() {
-
-  // if it is the first run of draw() create the pucks
-  if (initialRun == true) {
-    // create pucks:
-    for (int i = 0; i < arrayOfPucks.length; i++) {
-      createPuck(i);
-    }
-    stopPucksOverlapping(); // handle stuck pucks
-    initialRun = false;
+  // create pucks:
+  for (int i = 0; i < arrayOfPucks.length; i++) {
+    createPuck(i);
   }
+  stopPucksOverlapping(); // handle stuck pucks
+  initialRun = false;
 }
 
 void checkAndHandlePlayerDeath() {
