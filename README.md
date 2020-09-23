@@ -1,3 +1,5 @@
+University coursework. Grade: 92%
+
 # IceHockey
 
 This is my year 1 programming coursework.
